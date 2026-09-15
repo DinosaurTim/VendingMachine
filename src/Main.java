@@ -43,10 +43,6 @@ public class Main {
                         System.out.println("Not enough stuff.");
                     }
                 }
-                else {
-                    System.out.println("Vending Machine Error. Machine is now broken");
-                    running = false;
-                }
             }
         }
     }
