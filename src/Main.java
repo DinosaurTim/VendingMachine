@@ -10,11 +10,24 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ReadFile file = new ReadFile();
         ArrayList<String> names = new ArrayList<>();
+        ArrayList<Integer> quantities = new ArrayList<>();
         String text = file.reader(new File("C:\\Users\\128YBorenko\\IdeaProjects\\Vending Machine\\src\\contents.txt"));
         Scanner scan = new Scanner(text);
 
+        int count = 0;
         while (scan.hasNext()) {
-            System.out.println(scan.next());
+            if (count % 2 == 0) {
+                names.add(scan.next());
+            } else {
+                quantities.add(Integer.valueOf(scan.next()));
+            }
+            count++;
+        }
+        for (String name : names) {
+            System.out.println(name);
+        }
+        for (Integer quantity : quantities) {
+            System.out.println(quantity);
         }
 
         System.out.println("Vending Machine");
