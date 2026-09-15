@@ -12,37 +12,37 @@ public class Main {
         ReadFile file = new ReadFile();
         ArrayList<String> names = new ArrayList<>();
         ArrayList<Integer> quantities = new ArrayList<>();
-        String text = file.reader(new File("C:\\Users\\128YBorenko\\IdeaProjects\\Vending Machine\\src\\contents.txt"));
+        String text = file.reader(new File("src/contents.txt"));
         Scanner scan = new Scanner(text);
+        Scanner scanner = new Scanner(System.in);
 
-        int count = 0;
-        while (scan.hasNext()) {
-            if (count % 2 == 0) {
-                names.add(scan.next());
-            } else {
-                quantities.add(Integer.valueOf(scan.next()));
-            }
-            count++;
-        }
-
-        for (Integer quantity : quantities) {
-            System.out.println(quantity);
-        }
-
-        System.out.println("Vending Machine");
-        System.out.println("Choose from one of the options below:");
-        for (String name : names) {
-            System.out.println(name);
-        }
-        Scanner scan2 = new Scanner(System.in);
-        String answer = scan2.next();
-        for (int i=0; i<5; i++){
-            if (answer.equals(names.get(i))) {
-                if (quantities.get(i) > 0) {
-                    quantities.set(i, quantities.get(i) - 1);
+        while (true) {
+            int count = 0;
+            while (scan.hasNext()) {
+                if (count % 2 == 0) {
+                    names.add(scan.next());
+                } else {
+                    quantities.add(Integer.valueOf(scan.next()));
                 }
-                else {
-                    System.out.println("Not enough stuff.");
+                count++;
+            }
+
+            System.out.println("Vending Machine");
+            System.out.println("Choose from one of the options below:");
+            for (String name : names) {
+                System.out.println(name);
+            }
+
+            Scanner scan2 = new Scanner(System.in);
+            String answer = scan2.next();
+            for (int i = 0; i < 5; i++) {
+                if (answer.equals(names.get(i))) {
+                    if (quantities.get(i) > 0) {
+                        quantities.set(i, quantities.get(i) - 1);
+                        System.out.println("Thank you, have a good day.");
+                    } else {
+                        System.out.println("Not enough stuff.");
+                    }
                 }
             }
         }
