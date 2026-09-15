@@ -8,15 +8,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //boolean running = true;
+        boolean running = true;
         ReadFile file = new ReadFile();
         ArrayList<String> names = new ArrayList<>();
         ArrayList<Integer> quantities = new ArrayList<>();
         String text = file.reader(new File("src/contents.txt"));
         Scanner scan = new Scanner(text);
-        Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        while (running) {
             int count = 0;
             while (scan.hasNext()) {
                 if (count % 2 == 0) {
@@ -43,6 +42,10 @@ public class Main {
                     } else {
                         System.out.println("Not enough stuff.");
                     }
+                }
+                else {
+                    System.out.println("Vending Machine Error. Machine is now broken");
+                    running = false;
                 }
             }
         }
